@@ -16,10 +16,12 @@ Coder::Coder() :
     blockSize(0),
     numBlocks(0),
     rank(0),
-    coeffs(NULL),
-    blocks(NULL)
+    coeffs(nullptr)
 {
-
+    blocks = new uint8_t*[numBlocks];
+    for (size_t i = 0; i < numBlocks; i++) {
+        blocks[i] = new uint8_t[blockSize];
+    }
 }
 
 Coder::Coder(size_t _blockSize, size_t _numBlocks) :
@@ -27,18 +29,18 @@ Coder::Coder(size_t _blockSize, size_t _numBlocks) :
     blockSize(_blockSize),
     numBlocks(_numBlocks),
     rank(0),
-    coeffs(NULL),
-    blocks(NULL)
+    coeffs(nullptr),
+    blocks(nullptr)
 {
 
     coeffs = new uint8_t*[numBlocks];
+    blocks = new uint8_t*[numBlocks];
     for (size_t i = 0; i < numBlocks; i++) {
         coeffs[i] = new uint8_t[numBlocks];
         memset(coeffs[i], 0, numBlocks);
+        blocks[i] = new uint8_t[blockSize];
+        memset(blocks[i], 0, blockSize);
     }
-
-    blocks = new uint8_t*[numBlocks];
-
 }
 
 Coder::Coder(size_t _blockSize, size_t _numBlocks, uint8_t **_blocks) :
@@ -46,8 +48,8 @@ Coder::Coder(size_t _blockSize, size_t _numBlocks, uint8_t **_blocks) :
     blockSize(_blockSize),
     numBlocks(_numBlocks),
     rank(_numBlocks),
-    coeffs(NULL),
-    blocks(NULL)
+    coeffs(nullptr),
+    blocks(nullptr)
 {
 
     coeffs = new uint8_t*[numBlocks];
@@ -67,8 +69,8 @@ Coder::Coder(const Coder& other) :
     blockSize(other.blockSize),
     numBlocks(other.numBlocks),
     rank(other.rank),
-    coeffs(NULL),
-    blocks(NULL)
+    coeffs(nullptr),
+    blocks(nullptr)
 {
 
     coeffs = new uint8_t*[numBlocks];

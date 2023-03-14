@@ -29,6 +29,12 @@ public:
     /*! @brief Default constructor */
     Coder();
 
+    /*! @brief Constructor
+        @param[in] _blockSize The block size
+        @param[in] _numBlocks The number of blocks
+    */
+    Coder(size_t _blockSize, size_t _numBlocks);
+
     /*! @brief Copy constructor */
     Coder(const Coder& other);
 
@@ -120,12 +126,6 @@ private:
         @param[in] _blocks The blocks of data
     */
     Coder(size_t _blockSize, size_t _numBlocks, uint8_t **_blocks);
-
-    /*! @brief Constructor for decoders
-        @param[in] _blockSize The block size
-        @param[in] _numBlocks The number of blocks
-    */
-    Coder(size_t _blockSize, size_t _numBlocks);
 
     /*! @brief Swaps two Coder objects
         @param[in,out] first The first Coder
