@@ -6,13 +6,13 @@
     @copyright (c) 2014, see LICENSE for details
 */
 
-#include "gf28.h"
-#include "utils.h"
-#include "blockypacket.h"
-#include "coder.h"
-#include "blockycodermemory.h"
-#include "blockycoderfile.h"
-#include "blockycodermmap.h"
+#include "../include/blocky/gf28.h"
+#include "../include/blocky/utils.h"
+#include "../include/blocky/blockypacket.h"
+#include "../include/blocky/coder.h"
+#include "../include/blocky/blockycodermemory.h"
+#include "../include/blocky/blockycoderfile.h"
+#include "../include/blocky/blockycodermmap.h"
 
 #include <vector>
 #include <algorithm>

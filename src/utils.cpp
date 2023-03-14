@@ -6,7 +6,7 @@
     @copyright (c) 2014, see LICENSE for details
 */
 
-#include "utils.h"
+#include "../include/blocky/utils.h"
 
 using namespace blocky;
 

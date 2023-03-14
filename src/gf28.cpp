@@ -6,7 +6,7 @@
     @copyright (c) 2014, see LICENSE for details
 */
 
-#include "gf28.h"
+#include "../include/blocky/gf28.h"
 
 using namespace blocky;
 

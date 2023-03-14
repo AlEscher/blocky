@@ -6,7 +6,7 @@
     @copyright (c) 2014, see LICENSE for details
 */
 
-#include "blockycoder.h"
+#include "../include/blocky/blockycoder.h"
 
 using namespace blocky;
 

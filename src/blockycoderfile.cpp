@@ -6,7 +6,7 @@
     @copyright (c) 2014, see LICENSE for details
 */
 
-#include "blockycoderfile.h"
+#include "../include/blocky/blockycoderfile.h"
 #include <unistd.h>
 
 using namespace blocky;

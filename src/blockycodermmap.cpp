@@ -6,7 +6,7 @@
     @copyright (c) 2014, see LICENSE for details
 */
 
-#include "blockycodermmap.h"
+#include "../include/blocky/blockycodermmap.h"
 #include <sys/mman.h>
 #include <unistd.h>
 
