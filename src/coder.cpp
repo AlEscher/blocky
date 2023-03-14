@@ -101,6 +101,9 @@ Coder::~Coder()
     }
 
     if (blocks) {
+        for (size_t i = 0; i < numBlocks; i++) {
+            delete [] blocks[i];
+        }
         delete [] blocks;
     }
 }

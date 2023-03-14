@@ -48,7 +48,6 @@ public:
         @param[in] _blockSize The block size
         @param[in] _numBlocks The number of blocks
         @param[in] _blocks The blocks of data
-        @warning The coder will use the blocks as is and not free them when destroyed. It is the responsibility of the caller to free the memory appropriately.
     */
     static Coder createEncoder(size_t _blockSize, size_t _numBlocks, uint8_t **_blocks);
 
@@ -62,7 +61,6 @@ public:
         @param[in] block The block
         @param[in] _coeffs The coefficients
         @returns Whether the block was helpful
-        @warning The coder will take ownership of the block as is and not free it when destroyed. It is the responsibility of the caller to free memory appropriately.
     */
     bool store(uint8_t *block, uint8_t *_coeffs);
 
