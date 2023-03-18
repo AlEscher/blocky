@@ -39,6 +39,7 @@ Coder::Coder(size_t _blockSize, size_t _numBlocks) :
     for (size_t i = 0; i < numBlocks; i++) {
         coeffs[i] = new uint8_t[numBlocks];
         memset(coeffs[i], 0, numBlocks);
+        blocks[i] = blocks[0] + i * blockSize;
     }
 }
 
@@ -102,8 +103,7 @@ Coder::~Coder()
     }
 
     if (blocks) {
-        // Deallocating our blocks makes the program crash...
-        //delete[] blocks[0];
+        delete[] blocks[0];
         delete[] blocks;
     }
 }
@@ -164,7 +164,7 @@ bool Coder::store(uint8_t *block, uint8_t *_coeffs)
     }
 
     // Gaussian elimination would have upped rank
-    blocks[rank-1] = block;
+    memcpy(blocks[rank-1], block, blockSize);
     rowOperations();
 
     return true;
