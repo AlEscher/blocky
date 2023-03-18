@@ -35,11 +35,10 @@ Coder::Coder(size_t _blockSize, size_t _numBlocks) :
 
     coeffs = new uint8_t*[numBlocks];
     blocks = new uint8_t*[numBlocks];
+    blocks[0] = new uint8_t[numBlocks * blockSize];
     for (size_t i = 0; i < numBlocks; i++) {
         coeffs[i] = new uint8_t[numBlocks];
         memset(coeffs[i], 0, numBlocks);
-        blocks[i] = new uint8_t[blockSize];
-        memset(blocks[i], 0, blockSize);
     }
 }
 
@@ -96,17 +95,16 @@ Coder::~Coder()
 
     if (coeffs) {
         for (size_t i = 0; i < numBlocks; i++) {
-            delete [] coeffs[i];
+            delete[] coeffs[i];
         }
 
-        delete [] coeffs;
+        delete[] coeffs;
     }
 
     if (blocks) {
-        for (size_t i = 0; i < numBlocks; i++) {
-            delete [] blocks[i];
-        }
-        delete [] blocks;
+        // Deallocating our blocks makes the program crash...
+        //delete[] blocks[0];
+        delete[] blocks;
     }
 }
 
