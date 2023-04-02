@@ -118,6 +118,11 @@ public:
     */
     inline uint8_t** getBlocks() { return blocks; }
 
+    /*! @brief Get the array of coding coefficients
+        @returns Array of coding coefficients
+    */
+    inline uint8_t** getCoefficients() { return coeffs; }
+
 private:
 
     /*! @brief Constructor for encoders
