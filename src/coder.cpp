@@ -261,12 +261,11 @@ bool Coder::gaussianElimination(uint8_t *_coeffs)
     // Compute new rank
     size_t _rank = 0;
     for (size_t i = 0; i < numBlocks; i++) {
-        // TODO: Be less strict and reject fewer packets?
-        //for (size_t j = i; j < numBlocks; j++) {
-            if (cfs[i][i] != 0) {
+        for (size_t j = 0; j < numBlocks; j++) {
+            if (cfs[i][j] != 0) {
                 _rank++;
-                //break;
-            //}
+                break;
+            }
         }
     }
 
