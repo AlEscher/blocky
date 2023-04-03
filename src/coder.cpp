@@ -242,7 +242,7 @@ bool Coder::gaussianElimination(uint8_t *_coeffs)
     }
     memcpy(cfs[rank], _coeffs, numBlocks);
 
-
+    /*
     // Gaussian elimination
     for (size_t k = 0; k < numBlocks - 1; k++) {
 
@@ -257,6 +257,42 @@ bool Coder::gaussianElimination(uint8_t *_coeffs)
         }
 
     }
+    */
+    // Row echelon form reduction
+    size_t pivot = 0;
+    for (size_t k = 0; k < numBlocks && pivot < numBlocks; k++) {
+        // Find pivot row
+        size_t i_max = pivot;
+        uint8_t max_value = cfs[i_max][k];
+        for (size_t i = pivot + 1; i < numBlocks; i++) {
+            uint8_t value = cfs[i][k];
+            if (value > max_value) {
+                i_max = i;
+                max_value = value;
+            }
+        }
+        if (max_value == 0) {
+            // No pivot in this column, move to next column
+            continue;
+        }
+
+        // Swap rows to put pivot row in position
+        if (i_max != pivot) {
+            std::swap(cfs[pivot], cfs[i_max]);
+        }
+
+        // Eliminate elements below pivot
+        for (size_t i = pivot + 1; i < numBlocks; i++) {
+            uint8_t factor = gf.div(cfs[i][k], cfs[pivot][k]);
+            for (size_t j = k; j < numBlocks; j++) {
+                cfs[i][j] = gf.sub(cfs[i][j], gf.mul(factor, cfs[pivot][j]));
+            }
+        }
+
+        // Move to next column and row
+        pivot++;
+    }
+
 
     // Compute new rank
     size_t _rank = 0;
